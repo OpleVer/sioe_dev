@@ -1,0 +1,32 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <span class="hipster img-responsive img-rounded"></span>
+        </div>
+        <div class="col-md-8">
+            <h1>Sistema Integral De Oficialia Electoral</h1>
+            <p class="lead"> <h3>Bienvenido</h3></p>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <div class="alert alert-success" ng-switch-when="true">
+                    Te has identificado como "{{vm.account.login}}".
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false">
+                  Oficialia Electoral SIOE  <a class="alert-link" href="" ng-click="vm.login()">   Iniciar Sesion</a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <p>
+              <h4> Organismo Publico Electoral De Veracruz </h4>
+                <br>
+            </p>
+
+            <ul>
+                <li><a href="http://www.oplever.org.mx" target="_blank" rel="noopener">OPLEVER</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
