@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Peticion</span> {{vm.peticion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Numero Peticion</span></dt>
+        <dd>
+            <span>{{vm.peticion.numero_peticion}}</span>
+        </dd>
+        <dt><span>Fecha</span></dt>
+        <dd>
+            <span>{{vm.peticion.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Acto Certificar</span></dt>
+        <dd>
+            <span>{{vm.peticion.acto_certificar}}</span>
+        </dd>
+        <dt><span>Responsable</span></dt>
+        <dd>
+            <span>{{vm.peticion.responsable}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
