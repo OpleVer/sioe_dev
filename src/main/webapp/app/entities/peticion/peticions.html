@@ -23,6 +23,7 @@
                     <th jh-sort-by="fecha"><span>Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="acto_certificar"><span>Acto Certificar</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="responsable"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="peticionarios.peticionarios"><span>Peticionarios</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                         <td>{{peticion.fecha | date:'mediumDate'}}</td>
                     <td>{{peticion.acto_certificar}}</td>
                     <td>{{peticion.responsable}}</td>
+                    <td>
+                        <a ui-sref="peticionario-detail({id:peticion.peticionarios.id})">{{peticion.peticionarios.nombre}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

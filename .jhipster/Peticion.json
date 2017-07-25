@@ -1,6 +1,16 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "peticionarios",
+            "otherEntityName": "peticionario",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "peticionarios"
+        }
+    ],
     "fields": [
         {
             "fieldName": "numero_peticion",

@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Peticion Management Detail Controller', function() {
+    describe('Peticionario Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockPeticion, MockPeticionario;
+        var MockEntity, MockPreviousState, MockPeticionario;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,7 +12,6 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockPeticion = jasmine.createSpy('MockPeticion');
             MockPeticionario = jasmine.createSpy('MockPeticionario');
             
 
@@ -21,18 +20,17 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Peticion': MockPeticion,
                 'Peticionario': MockPeticionario
             };
             createController = function() {
-                $injector.get('$controller')("PeticionDetailController", locals);
+                $injector.get('$controller')("PeticionarioDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'sioeDevApp:peticionUpdate';
+                var eventType = 'sioeDevApp:peticionarioUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

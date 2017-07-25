@@ -7,7 +7,9 @@
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170724191354_added_entity_Peticion.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170724195148_added_entity_Anexo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170725144256_added_entity_Peticionario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20170724195148_added_entity_constraints_Anexo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170724191354_added_entity_constraints_Peticion.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

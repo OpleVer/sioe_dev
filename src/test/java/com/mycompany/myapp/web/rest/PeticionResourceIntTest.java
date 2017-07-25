@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.SioeDevApp;
 
 import com.mycompany.myapp.domain.Peticion;
+import com.mycompany.myapp.domain.Peticionario;
 import com.mycompany.myapp.repository.PeticionRepository;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
@@ -92,6 +93,11 @@ public class PeticionResourceIntTest {
             .fecha(DEFAULT_FECHA)
             .acto_certificar(DEFAULT_ACTO_CERTIFICAR)
             .responsable(DEFAULT_RESPONSABLE);
+        // Add required entity
+        Peticionario peticionarios = PeticionarioResourceIntTest.createEntity(em);
+        em.persist(peticionarios);
+        em.flush();
+        peticion.setPeticionarios(peticionarios);
         return peticion;
     }
 

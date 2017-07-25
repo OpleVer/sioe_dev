@@ -20,6 +20,10 @@
         <dd>
             <span>{{vm.peticion.responsable}}</span>
         </dd>
+        <dt><span>Peticionarios</span></dt>
+        <dd>
+            <a ui-sref="peticionario-detail({id:vm.peticion.peticionarios.id})">{{vm.peticion.peticionarios.nombre}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

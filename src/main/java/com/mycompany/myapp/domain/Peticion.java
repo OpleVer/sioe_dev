@@ -41,6 +41,10 @@ public class Peticion implements Serializable {
     @Column(name = "responsable", length = 60, nullable = false)
     private String responsable;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    private Peticionario peticionarios;
+
     public Long getId() {
         return id;
     }
@@ -99,6 +103,19 @@ public class Peticion implements Serializable {
 
     public void setResponsable(String responsable) {
         this.responsable = responsable;
+    }
+
+    public Peticionario getPeticionarios() {
+        return peticionarios;
+    }
+
+    public Peticion peticionarios(Peticionario peticionario) {
+        this.peticionarios = peticionario;
+        return this;
+    }
+
+    public void setPeticionarios(Peticionario peticionario) {
+        this.peticionarios = peticionario;
     }
 
     @Override

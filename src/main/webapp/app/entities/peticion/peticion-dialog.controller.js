@@ -5,9 +5,9 @@
         .module('sioeDevApp')
         .controller('PeticionDialogController', PeticionDialogController);
 
-    PeticionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Peticion'];
+    PeticionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Peticion', 'Peticionario'];
 
-    function PeticionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Peticion) {
+    function PeticionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Peticion, Peticionario) {
         var vm = this;
 
         vm.peticion = entity;
@@ -15,6 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        vm.peticionarios = Peticionario.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
