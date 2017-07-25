@@ -52,6 +52,15 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_RESPONSABLE = "AAAAAAAAAA";
     private static final String UPDATED_RESPONSABLE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SOLICITANTE = "AAAAAAAAAA";
+    private static final String UPDATED_SOLICITANTE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DIRECCION = "AAAAAAAAAA";
+    private static final String UPDATED_DIRECCION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_OFICIO = "AAAAAAAAAA";
+    private static final String UPDATED_OFICIO = "BBBBBBBBBB";
+
     @Autowired
     private PeticionRepository peticionRepository;
 
@@ -92,7 +101,10 @@ public class PeticionResourceIntTest {
             .numero_peticion(DEFAULT_NUMERO_PETICION)
             .fecha(DEFAULT_FECHA)
             .acto_certificar(DEFAULT_ACTO_CERTIFICAR)
-            .responsable(DEFAULT_RESPONSABLE);
+            .responsable(DEFAULT_RESPONSABLE)
+            .solicitante(DEFAULT_SOLICITANTE)
+            .direccion(DEFAULT_DIRECCION)
+            .oficio(DEFAULT_OFICIO);
         // Add required entity
         Peticionario peticionarios = PeticionarioResourceIntTest.createEntity(em);
         em.persist(peticionarios);
@@ -125,6 +137,9 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getFecha()).isEqualTo(DEFAULT_FECHA);
         assertThat(testPeticion.getActo_certificar()).isEqualTo(DEFAULT_ACTO_CERTIFICAR);
         assertThat(testPeticion.getResponsable()).isEqualTo(DEFAULT_RESPONSABLE);
+        assertThat(testPeticion.getSolicitante()).isEqualTo(DEFAULT_SOLICITANTE);
+        assertThat(testPeticion.getDireccion()).isEqualTo(DEFAULT_DIRECCION);
+        assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
     }
 
     @Test
@@ -220,6 +235,42 @@ public class PeticionResourceIntTest {
 
     @Test
     @Transactional
+    public void checkSolicitanteIsRequired() throws Exception {
+        int databaseSizeBeforeTest = peticionRepository.findAll().size();
+        // set the field null
+        peticion.setSolicitante(null);
+
+        // Create the Peticion, which fails.
+
+        restPeticionMockMvc.perform(post("/api/peticions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(peticion)))
+            .andExpect(status().isBadRequest());
+
+        List<Peticion> peticionList = peticionRepository.findAll();
+        assertThat(peticionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDireccionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = peticionRepository.findAll().size();
+        // set the field null
+        peticion.setDireccion(null);
+
+        // Create the Peticion, which fails.
+
+        restPeticionMockMvc.perform(post("/api/peticions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(peticion)))
+            .andExpect(status().isBadRequest());
+
+        List<Peticion> peticionList = peticionRepository.findAll();
+        assertThat(peticionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPeticions() throws Exception {
         // Initialize the database
         peticionRepository.saveAndFlush(peticion);
@@ -232,7 +283,10 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].numero_peticion").value(hasItem(DEFAULT_NUMERO_PETICION.toString())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
             .andExpect(jsonPath("$.[*].acto_certificar").value(hasItem(DEFAULT_ACTO_CERTIFICAR.toString())))
-            .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())));
+            .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())))
+            .andExpect(jsonPath("$.[*].solicitante").value(hasItem(DEFAULT_SOLICITANTE.toString())))
+            .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION.toString())))
+            .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())));
     }
 
     @Test
@@ -249,7 +303,10 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.numero_peticion").value(DEFAULT_NUMERO_PETICION.toString()))
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
             .andExpect(jsonPath("$.acto_certificar").value(DEFAULT_ACTO_CERTIFICAR.toString()))
-            .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()));
+            .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()))
+            .andExpect(jsonPath("$.solicitante").value(DEFAULT_SOLICITANTE.toString()))
+            .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION.toString()))
+            .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()));
     }
 
     @Test
@@ -273,7 +330,10 @@ public class PeticionResourceIntTest {
             .numero_peticion(UPDATED_NUMERO_PETICION)
             .fecha(UPDATED_FECHA)
             .acto_certificar(UPDATED_ACTO_CERTIFICAR)
-            .responsable(UPDATED_RESPONSABLE);
+            .responsable(UPDATED_RESPONSABLE)
+            .solicitante(UPDATED_SOLICITANTE)
+            .direccion(UPDATED_DIRECCION)
+            .oficio(UPDATED_OFICIO);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -288,6 +348,9 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getFecha()).isEqualTo(UPDATED_FECHA);
         assertThat(testPeticion.getActo_certificar()).isEqualTo(UPDATED_ACTO_CERTIFICAR);
         assertThat(testPeticion.getResponsable()).isEqualTo(UPDATED_RESPONSABLE);
+        assertThat(testPeticion.getSolicitante()).isEqualTo(UPDATED_SOLICITANTE);
+        assertThat(testPeticion.getDireccion()).isEqualTo(UPDATED_DIRECCION);
+        assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
     }
 
     @Test

@@ -38,6 +38,18 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="solicitante" type="varchar(65)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="direccion" type="varchar(200)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="oficio" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="peticionarios_id" type="bigint">
                 <constraints nullable="false" />
             </column>

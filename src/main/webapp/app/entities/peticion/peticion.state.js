@@ -99,6 +99,9 @@
                                 fecha: null,
                                 acto_certificar: null,
                                 responsable: null,
+                                solicitante: null,
+                                direccion: null,
+                                oficio: null,
                                 id: null
                             };
                         }

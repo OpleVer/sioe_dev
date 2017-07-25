@@ -20,9 +20,21 @@
         <dd>
             <span>{{vm.peticion.responsable}}</span>
         </dd>
+        <dt><span>Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.solicitante}}</span>
+        </dd>
+        <dt><span>Direccion</span></dt>
+        <dd>
+            <span>{{vm.peticion.direccion}}</span>
+        </dd>
+        <dt><span>Oficio</span></dt>
+        <dd>
+            <span>{{vm.peticion.oficio}}</span>
+        </dd>
         <dt><span>Peticionarios</span></dt>
         <dd>
-            <a ui-sref="peticionario-detail({id:vm.peticion.peticionarios.id})">{{vm.peticion.peticionarios.nombre}}</a>
+            <a ui-sref="peticionario-detail({id:vm.peticion.peticionarios.id})">{{vm.peticion.peticionarios.peticionarios}}</a>
         </dd>
     </dl>
 

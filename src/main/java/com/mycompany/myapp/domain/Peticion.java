@@ -41,6 +41,19 @@ public class Peticion implements Serializable {
     @Column(name = "responsable", length = 60, nullable = false)
     private String responsable;
 
+    @NotNull
+    @Size(max = 65)
+    @Column(name = "solicitante", length = 65, nullable = false)
+    private String solicitante;
+
+    @NotNull
+    @Size(max = 200)
+    @Column(name = "direccion", length = 200, nullable = false)
+    private String direccion;
+
+    @Column(name = "oficio")
+    private String oficio;
+
     @ManyToOne(optional = false)
     @NotNull
     private Peticionario peticionarios;
@@ -105,6 +118,45 @@ public class Peticion implements Serializable {
         this.responsable = responsable;
     }
 
+    public String getSolicitante() {
+        return solicitante;
+    }
+
+    public Peticion solicitante(String solicitante) {
+        this.solicitante = solicitante;
+        return this;
+    }
+
+    public void setSolicitante(String solicitante) {
+        this.solicitante = solicitante;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Peticion direccion(String direccion) {
+        this.direccion = direccion;
+        return this;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getOficio() {
+        return oficio;
+    }
+
+    public Peticion oficio(String oficio) {
+        this.oficio = oficio;
+        return this;
+    }
+
+    public void setOficio(String oficio) {
+        this.oficio = oficio;
+    }
+
     public Peticionario getPeticionarios() {
         return peticionarios;
     }
@@ -146,6 +198,9 @@ public class Peticion implements Serializable {
             ", fecha='" + getFecha() + "'" +
             ", acto_certificar='" + getActo_certificar() + "'" +
             ", responsable='" + getResponsable() + "'" +
+            ", solicitante='" + getSolicitante() + "'" +
+            ", direccion='" + getDireccion() + "'" +
+            ", oficio='" + getOficio() + "'" +
             "}";
     }
 }

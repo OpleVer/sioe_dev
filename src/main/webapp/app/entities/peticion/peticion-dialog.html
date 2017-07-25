@@ -73,10 +73,48 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_solicitante">Solicitante</label>
+            <input type="text" class="form-control" name="solicitante" id="field_solicitante"
+                    ng-model="vm.peticion.solicitante"
+                    required ng-maxlength="65"/>
+            <div ng-show="editForm.solicitante.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.solicitante.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.solicitante.$error.maxlength">
+                    This field cannot be longer than 65 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_direccion">Direccion</label>
+            <input type="text" class="form-control" name="direccion" id="field_direccion"
+                    ng-model="vm.peticion.direccion"
+                    required ng-maxlength="200"/>
+            <div ng-show="editForm.direccion.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.direccion.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.direccion.$error.maxlength">
+                    This field cannot be longer than 200 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_oficio">Oficio</label>
+            <input type="text" class="form-control" name="oficio" id="field_oficio"
+                    ng-model="vm.peticion.oficio"
+                    />
+        </div>
 
         <div class="form-group">
             <label for="field_peticionarios">Peticionarios</label>
-            <select class="form-control" id="field_peticionarios" name="peticionarios" ng-model="vm.peticion.peticionarios" ng-options="peticionario as peticionario.nombre for peticionario in vm.peticionarios track by peticionario.nombre" required>
+            <select class="form-control" id="field_peticionarios" name="peticionarios" ng-model="vm.peticion.peticionarios" ng-options="peticionario as peticionario.peticionarios for peticionario in vm.peticionarios track by peticionario.id" required>
             </select>
         </div>
         <div ng-show="editForm.peticionarios.$invalid">
