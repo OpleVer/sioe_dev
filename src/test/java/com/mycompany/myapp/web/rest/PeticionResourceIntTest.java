@@ -4,6 +4,7 @@ import com.mycompany.myapp.SioeDevApp;
 
 import com.mycompany.myapp.domain.Peticion;
 import com.mycompany.myapp.domain.Peticionario;
+import com.mycompany.myapp.domain.Responsable;
 import com.mycompany.myapp.repository.PeticionRepository;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
@@ -61,6 +62,9 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_OFICIO = "AAAAAAAAAA";
     private static final String UPDATED_OFICIO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CARGO_SOLICITANTE = "AAAAAAAAAA";
+    private static final String UPDATED_CARGO_SOLICITANTE = "BBBBBBBBBB";
+
     @Autowired
     private PeticionRepository peticionRepository;
 
@@ -104,12 +108,18 @@ public class PeticionResourceIntTest {
             .responsable(DEFAULT_RESPONSABLE)
             .solicitante(DEFAULT_SOLICITANTE)
             .direccion(DEFAULT_DIRECCION)
-            .oficio(DEFAULT_OFICIO);
+            .oficio(DEFAULT_OFICIO)
+            .cargo_solicitante(DEFAULT_CARGO_SOLICITANTE);
         // Add required entity
         Peticionario peticionarios = PeticionarioResourceIntTest.createEntity(em);
         em.persist(peticionarios);
         em.flush();
         peticion.setPeticionarios(peticionarios);
+        // Add required entity
+        Responsable responsables = ResponsableResourceIntTest.createEntity(em);
+        em.persist(responsables);
+        em.flush();
+        peticion.setResponsables(responsables);
         return peticion;
     }
 
@@ -140,6 +150,7 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getSolicitante()).isEqualTo(DEFAULT_SOLICITANTE);
         assertThat(testPeticion.getDireccion()).isEqualTo(DEFAULT_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
+        assertThat(testPeticion.getCargo_solicitante()).isEqualTo(DEFAULT_CARGO_SOLICITANTE);
     }
 
     @Test
@@ -271,6 +282,24 @@ public class PeticionResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCargo_solicitanteIsRequired() throws Exception {
+        int databaseSizeBeforeTest = peticionRepository.findAll().size();
+        // set the field null
+        peticion.setCargo_solicitante(null);
+
+        // Create the Peticion, which fails.
+
+        restPeticionMockMvc.perform(post("/api/peticions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(peticion)))
+            .andExpect(status().isBadRequest());
+
+        List<Peticion> peticionList = peticionRepository.findAll();
+        assertThat(peticionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPeticions() throws Exception {
         // Initialize the database
         peticionRepository.saveAndFlush(peticion);
@@ -286,7 +315,8 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())))
             .andExpect(jsonPath("$.[*].solicitante").value(hasItem(DEFAULT_SOLICITANTE.toString())))
             .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION.toString())))
-            .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())));
+            .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())))
+            .andExpect(jsonPath("$.[*].cargo_solicitante").value(hasItem(DEFAULT_CARGO_SOLICITANTE.toString())));
     }
 
     @Test
@@ -306,7 +336,8 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()))
             .andExpect(jsonPath("$.solicitante").value(DEFAULT_SOLICITANTE.toString()))
             .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION.toString()))
-            .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()));
+            .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()))
+            .andExpect(jsonPath("$.cargo_solicitante").value(DEFAULT_CARGO_SOLICITANTE.toString()));
     }
 
     @Test
@@ -333,7 +364,8 @@ public class PeticionResourceIntTest {
             .responsable(UPDATED_RESPONSABLE)
             .solicitante(UPDATED_SOLICITANTE)
             .direccion(UPDATED_DIRECCION)
-            .oficio(UPDATED_OFICIO);
+            .oficio(UPDATED_OFICIO)
+            .cargo_solicitante(UPDATED_CARGO_SOLICITANTE);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -351,6 +383,7 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getSolicitante()).isEqualTo(UPDATED_SOLICITANTE);
         assertThat(testPeticion.getDireccion()).isEqualTo(UPDATED_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
+        assertThat(testPeticion.getCargo_solicitante()).isEqualTo(UPDATED_CARGO_SOLICITANTE);
     }
 
     @Test

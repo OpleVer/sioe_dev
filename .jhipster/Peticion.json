@@ -9,6 +9,15 @@
                 "required"
             ],
             "otherEntityField": "peticionarios"
+        },
+        {
+            "relationshipName": "responsables",
+            "otherEntityName": "responsable",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "tipo"
         }
     ],
     "fields": [
@@ -66,6 +75,15 @@
             "fieldName": "oficio",
             "fieldType": "String",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "cargo_solicitante",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "40"
         }
     ],
     "changelogDate": "20170724191354",

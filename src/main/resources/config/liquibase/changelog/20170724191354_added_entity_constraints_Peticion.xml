@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="peticionario"/>
 
+        <addForeignKeyConstraint baseColumnNames="responsables_id"
+                                 baseTableName="peticion"
+                                 constraintName="fk_peticion_responsables_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="responsable"/>
+
     </changeSet>
 </databaseChangeLog>

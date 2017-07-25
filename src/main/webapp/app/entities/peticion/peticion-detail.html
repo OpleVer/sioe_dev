@@ -32,9 +32,17 @@
         <dd>
             <span>{{vm.peticion.oficio}}</span>
         </dd>
+        <dt><span>Cargo Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.cargo_solicitante}}</span>
+        </dd>
         <dt><span>Peticionarios</span></dt>
         <dd>
             <a ui-sref="peticionario-detail({id:vm.peticion.peticionarios.id})">{{vm.peticion.peticionarios.peticionarios}}</a>
+        </dd>
+        <dt><span>Responsables</span></dt>
+        <dd>
+            <a ui-sref="responsable-detail({id:vm.peticion.responsables.id})">{{vm.peticion.responsables.tipo}}</a>
         </dd>
     </dl>
 

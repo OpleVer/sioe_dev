@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170725160841",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "responsable",
+    "pagination": "no"
+}

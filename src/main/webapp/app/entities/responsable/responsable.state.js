@@ -9,44 +9,44 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('peticion', {
+        .state('responsable', {
             parent: 'entity',
-            url: '/peticion',
+            url: '/responsable',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Peticions'
+                pageTitle: 'Responsables'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/peticion/peticions.html',
-                    controller: 'PeticionController',
+                    templateUrl: 'app/entities/responsable/responsables.html',
+                    controller: 'ResponsableController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
             }
         })
-        .state('peticion-detail', {
-            parent: 'peticion',
-            url: '/peticion/{id}',
+        .state('responsable-detail', {
+            parent: 'responsable',
+            url: '/responsable/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Peticion'
+                pageTitle: 'Responsable'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/peticion/peticion-detail.html',
-                    controller: 'PeticionDetailController',
+                    templateUrl: 'app/entities/responsable/responsable-detail.html',
+                    controller: 'ResponsableDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Peticion', function($stateParams, Peticion) {
-                    return Peticion.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Responsable', function($stateParams, Responsable) {
+                    return Responsable.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'peticion',
+                        name: $state.current.name || 'responsable',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -54,22 +54,22 @@
                 }]
             }
         })
-        .state('peticion-detail.edit', {
-            parent: 'peticion-detail',
+        .state('responsable-detail.edit', {
+            parent: 'responsable-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/responsable/responsable-dialog.html',
+                    controller: 'ResponsableDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Responsable', function(Responsable) {
+                            return Responsable.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -79,85 +79,78 @@
                 });
             }]
         })
-        .state('peticion.new', {
-            parent: 'peticion',
+        .state('responsable.new', {
+            parent: 'responsable',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/responsable/responsable-dialog.html',
+                    controller: 'ResponsableDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                numero_peticion: null,
-                                fecha: null,
-                                acto_certificar: null,
-                                responsable: null,
-                                solicitante: null,
-                                direccion: null,
-                                oficio: null,
-                                cargo_solicitante: null,
+                                tipo: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('responsable', null, { reload: 'responsable' });
                 }, function() {
-                    $state.go('peticion');
+                    $state.go('responsable');
                 });
             }]
         })
-        .state('peticion.edit', {
-            parent: 'peticion',
+        .state('responsable.edit', {
+            parent: 'responsable',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/responsable/responsable-dialog.html',
+                    controller: 'ResponsableDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Responsable', function(Responsable) {
+                            return Responsable.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('responsable', null, { reload: 'responsable' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('peticion.delete', {
-            parent: 'peticion',
+        .state('responsable.delete', {
+            parent: 'responsable',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-delete-dialog.html',
-                    controller: 'PeticionDeleteController',
+                    templateUrl: 'app/entities/responsable/responsable-delete-dialog.html',
+                    controller: 'ResponsableDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Responsable', function(Responsable) {
+                            return Responsable.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('responsable', null, { reload: 'responsable' });
                 }, function() {
                     $state.go('^');
                 });

@@ -111,6 +111,22 @@
                     ng-model="vm.peticion.oficio"
                     />
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cargo_solicitante">Cargo Solicitante</label>
+            <input type="text" class="form-control" name="cargo_solicitante" id="field_cargo_solicitante"
+                    ng-model="vm.peticion.cargo_solicitante"
+                    required ng-maxlength="40"/>
+            <div ng-show="editForm.cargo_solicitante.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cargo_solicitante.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cargo_solicitante.$error.maxlength">
+                    This field cannot be longer than 40 characters.
+                </p>
+            </div>
+        </div>
 
         <div class="form-group">
             <label for="field_peticionarios">Peticionarios</label>
@@ -120,6 +136,17 @@
         <div ng-show="editForm.peticionarios.$invalid">
             <p class="help-block"
                 ng-show="editForm.peticionarios.$error.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="field_responsables">Responsables</label>
+            <select class="form-control" id="field_responsables" name="responsables" ng-model="vm.peticion.responsables" ng-options="responsable as responsable.tipo for responsable in vm.responsables track by responsable.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.responsables.$invalid">
+            <p class="help-block"
+                ng-show="editForm.responsables.$error.required">
                 This field is required.
             </p>
         </div>

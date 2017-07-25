@@ -50,7 +50,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="cargo_solicitante" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="peticionarios_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="responsables_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 

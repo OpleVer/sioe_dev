@@ -54,9 +54,18 @@ public class Peticion implements Serializable {
     @Column(name = "oficio")
     private String oficio;
 
+    @NotNull
+    @Size(max = 40)
+    @Column(name = "cargo_solicitante", length = 40, nullable = false)
+    private String cargo_solicitante;
+
     @ManyToOne(optional = false)
     @NotNull
     private Peticionario peticionarios;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    private Responsable responsables;
 
     public Long getId() {
         return id;
@@ -157,6 +166,19 @@ public class Peticion implements Serializable {
         this.oficio = oficio;
     }
 
+    public String getCargo_solicitante() {
+        return cargo_solicitante;
+    }
+
+    public Peticion cargo_solicitante(String cargo_solicitante) {
+        this.cargo_solicitante = cargo_solicitante;
+        return this;
+    }
+
+    public void setCargo_solicitante(String cargo_solicitante) {
+        this.cargo_solicitante = cargo_solicitante;
+    }
+
     public Peticionario getPeticionarios() {
         return peticionarios;
     }
@@ -168,6 +190,19 @@ public class Peticion implements Serializable {
 
     public void setPeticionarios(Peticionario peticionario) {
         this.peticionarios = peticionario;
+    }
+
+    public Responsable getResponsables() {
+        return responsables;
+    }
+
+    public Peticion responsables(Responsable responsable) {
+        this.responsables = responsable;
+        return this;
+    }
+
+    public void setResponsables(Responsable responsable) {
+        this.responsables = responsable;
     }
 
     @Override
@@ -201,6 +236,7 @@ public class Peticion implements Serializable {
             ", solicitante='" + getSolicitante() + "'" +
             ", direccion='" + getDireccion() + "'" +
             ", oficio='" + getOficio() + "'" +
+            ", cargo_solicitante='" + getCargo_solicitante() + "'" +
             "}";
     }
 }

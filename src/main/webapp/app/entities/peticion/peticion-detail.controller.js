@@ -5,9 +5,9 @@
         .module('sioeDevApp')
         .controller('PeticionDetailController', PeticionDetailController);
 
-    PeticionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Peticion', 'Peticionario'];
+    PeticionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Peticion', 'Peticionario', 'Responsable'];
 
-    function PeticionDetailController($scope, $rootScope, $stateParams, previousState, entity, Peticion, Peticionario) {
+    function PeticionDetailController($scope, $rootScope, $stateParams, previousState, entity, Peticion, Peticionario, Responsable) {
         var vm = this;
 
         vm.peticion = entity;
