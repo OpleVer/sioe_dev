@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Evaluacion</span> {{vm.evaluacion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Tipo</span></dt>
+        <dd>
+            <span>{{vm.evaluacion.tipo}}</span>
+        </dd>
+        <dt><span>Numero Acta</span></dt>
+        <dd>
+            <span>{{vm.evaluacion.numero_acta}}</span>
+        </dd>
+        <dt><span>Acta</span></dt>
+        <dd>
+            <span>{{vm.evaluacion.acta}}</span>
+        </dd>
+        <dt><span>Acuerdo</span></dt>
+        <dd>
+            <span>{{vm.evaluacion.acuerdo}}</span>
+        </dd>
+        <dt><span>Cedula</span></dt>
+        <dd>
+            <span>{{vm.evaluacion.cedula}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="evaluacion-detail.edit({id:vm.evaluacion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

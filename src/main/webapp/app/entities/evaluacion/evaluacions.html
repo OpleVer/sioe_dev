@@ -1,0 +1,64 @@
+<div>
+    <h2>Evaluacions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="evaluacion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Evaluacion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipo"><span>Tipo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numero_acta"><span>Numero Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acta"><span>Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acuerdo"><span>Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cedula"><span>Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="evaluacion in vm.evaluacions track by evaluacion.id">
+                    <td><a ui-sref="evaluacion-detail({id:evaluacion.id})">{{evaluacion.id}}</a></td>
+                    <td>{{evaluacion.tipo}}</td>
+                    <td>{{evaluacion.numero_acta}}</td>
+                    <td>{{evaluacion.acta}}</td>
+                    <td>{{evaluacion.acuerdo}}</td>
+                    <td>{{evaluacion.cedula}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="evaluacion-detail({id:evaluacion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="evaluacion.edit({id:evaluacion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="evaluacion.delete({id:evaluacion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
