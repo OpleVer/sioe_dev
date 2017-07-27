@@ -5,9 +5,9 @@
         .module('sioeDevApp')
         .controller('AnexoDetailController', AnexoDetailController);
 
-    AnexoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Anexo', 'Peticion'];
+    AnexoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Anexo'];
 
-    function AnexoDetailController($scope, $rootScope, $stateParams, previousState, entity, Anexo, Peticion) {
+    function AnexoDetailController($scope, $rootScope, $stateParams, previousState, entity, Anexo) {
         var vm = this;
 
         vm.anexo = entity;

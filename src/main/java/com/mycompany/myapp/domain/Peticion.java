@@ -59,6 +59,30 @@ public class Peticion implements Serializable {
     @Column(name = "cargo_solicitante", length = 40, nullable = false)
     private String cargo_solicitante;
 
+    @Column(name = "tipo_evaluacion")
+    private Integer tipo_evaluacion;
+
+    @Column(name = "numero_acta")
+    private String numero_acta;
+
+    @Column(name = "acta")
+    private String acta;
+
+    @Column(name = "acuerdo")
+    private String acuerdo;
+
+    @Column(name = "cedula")
+    private String cedula;
+
+    @Column(name = "descripcion_anexo")
+    private String descripcion_anexo;
+
+    @Column(name = "link_anexo")
+    private String link_anexo;
+
+    @Column(name = "completada")
+    private Boolean completada;
+
     @ManyToOne(optional = false)
     @NotNull
     private Peticionario peticionarios;
@@ -179,6 +203,110 @@ public class Peticion implements Serializable {
         this.cargo_solicitante = cargo_solicitante;
     }
 
+    public Integer getTipo_evaluacion() {
+        return tipo_evaluacion;
+    }
+
+    public Peticion tipo_evaluacion(Integer tipo_evaluacion) {
+        this.tipo_evaluacion = tipo_evaluacion;
+        return this;
+    }
+
+    public void setTipo_evaluacion(Integer tipo_evaluacion) {
+        this.tipo_evaluacion = tipo_evaluacion;
+    }
+
+    public String getNumero_acta() {
+        return numero_acta;
+    }
+
+    public Peticion numero_acta(String numero_acta) {
+        this.numero_acta = numero_acta;
+        return this;
+    }
+
+    public void setNumero_acta(String numero_acta) {
+        this.numero_acta = numero_acta;
+    }
+
+    public String getActa() {
+        return acta;
+    }
+
+    public Peticion acta(String acta) {
+        this.acta = acta;
+        return this;
+    }
+
+    public void setActa(String acta) {
+        this.acta = acta;
+    }
+
+    public String getAcuerdo() {
+        return acuerdo;
+    }
+
+    public Peticion acuerdo(String acuerdo) {
+        this.acuerdo = acuerdo;
+        return this;
+    }
+
+    public void setAcuerdo(String acuerdo) {
+        this.acuerdo = acuerdo;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public Peticion cedula(String cedula) {
+        this.cedula = cedula;
+        return this;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getDescripcion_anexo() {
+        return descripcion_anexo;
+    }
+
+    public Peticion descripcion_anexo(String descripcion_anexo) {
+        this.descripcion_anexo = descripcion_anexo;
+        return this;
+    }
+
+    public void setDescripcion_anexo(String descripcion_anexo) {
+        this.descripcion_anexo = descripcion_anexo;
+    }
+
+    public String getLink_anexo() {
+        return link_anexo;
+    }
+
+    public Peticion link_anexo(String link_anexo) {
+        this.link_anexo = link_anexo;
+        return this;
+    }
+
+    public void setLink_anexo(String link_anexo) {
+        this.link_anexo = link_anexo;
+    }
+
+    public Boolean isCompletada() {
+        return completada;
+    }
+
+    public Peticion completada(Boolean completada) {
+        this.completada = completada;
+        return this;
+    }
+
+    public void setCompletada(Boolean completada) {
+        this.completada = completada;
+    }
+
     public Peticionario getPeticionarios() {
         return peticionarios;
     }
@@ -237,6 +365,14 @@ public class Peticion implements Serializable {
             ", direccion='" + getDireccion() + "'" +
             ", oficio='" + getOficio() + "'" +
             ", cargo_solicitante='" + getCargo_solicitante() + "'" +
+            ", tipo_evaluacion='" + getTipo_evaluacion() + "'" +
+            ", numero_acta='" + getNumero_acta() + "'" +
+            ", acta='" + getActa() + "'" +
+            ", acuerdo='" + getAcuerdo() + "'" +
+            ", cedula='" + getCedula() + "'" +
+            ", descripcion_anexo='" + getDescripcion_anexo() + "'" +
+            ", link_anexo='" + getLink_anexo() + "'" +
+            ", completada='" + isCompletada() + "'" +
             "}";
     }
 }

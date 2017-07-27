@@ -37,12 +37,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SioeDevApp.class)
 public class AnexoResourceIntTest {
 
-    private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_LINK = "AAAAAAAAAA";
-    private static final String UPDATED_LINK = "BBBBBBBBBB";
-
     @Autowired
     private AnexoRepository anexoRepository;
 
@@ -79,9 +73,7 @@ public class AnexoResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Anexo createEntity(EntityManager em) {
-        Anexo anexo = new Anexo()
-            .descripcion(DEFAULT_DESCRIPCION)
-            .link(DEFAULT_LINK);
+        Anexo anexo = new Anexo();
         return anexo;
     }
 
@@ -105,8 +97,6 @@ public class AnexoResourceIntTest {
         List<Anexo> anexoList = anexoRepository.findAll();
         assertThat(anexoList).hasSize(databaseSizeBeforeCreate + 1);
         Anexo testAnexo = anexoList.get(anexoList.size() - 1);
-        assertThat(testAnexo.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
-        assertThat(testAnexo.getLink()).isEqualTo(DEFAULT_LINK);
     }
 
     @Test
@@ -130,42 +120,6 @@ public class AnexoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDescripcionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = anexoRepository.findAll().size();
-        // set the field null
-        anexo.setDescripcion(null);
-
-        // Create the Anexo, which fails.
-
-        restAnexoMockMvc.perform(post("/api/anexos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(anexo)))
-            .andExpect(status().isBadRequest());
-
-        List<Anexo> anexoList = anexoRepository.findAll();
-        assertThat(anexoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkLinkIsRequired() throws Exception {
-        int databaseSizeBeforeTest = anexoRepository.findAll().size();
-        // set the field null
-        anexo.setLink(null);
-
-        // Create the Anexo, which fails.
-
-        restAnexoMockMvc.perform(post("/api/anexos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(anexo)))
-            .andExpect(status().isBadRequest());
-
-        List<Anexo> anexoList = anexoRepository.findAll();
-        assertThat(anexoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllAnexos() throws Exception {
         // Initialize the database
         anexoRepository.saveAndFlush(anexo);
@@ -174,9 +128,7 @@ public class AnexoResourceIntTest {
         restAnexoMockMvc.perform(get("/api/anexos?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(anexo.getId().intValue())))
-            .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(anexo.getId().intValue())));
     }
 
     @Test
@@ -189,9 +141,7 @@ public class AnexoResourceIntTest {
         restAnexoMockMvc.perform(get("/api/anexos/{id}", anexo.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(anexo.getId().intValue()))
-            .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
+            .andExpect(jsonPath("$.id").value(anexo.getId().intValue()));
     }
 
     @Test
@@ -211,9 +161,6 @@ public class AnexoResourceIntTest {
 
         // Update the anexo
         Anexo updatedAnexo = anexoRepository.findOne(anexo.getId());
-        updatedAnexo
-            .descripcion(UPDATED_DESCRIPCION)
-            .link(UPDATED_LINK);
 
         restAnexoMockMvc.perform(put("/api/anexos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -224,8 +171,6 @@ public class AnexoResourceIntTest {
         List<Anexo> anexoList = anexoRepository.findAll();
         assertThat(anexoList).hasSize(databaseSizeBeforeUpdate);
         Anexo testAnexo = anexoList.get(anexoList.size() - 1);
-        assertThat(testAnexo.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
-        assertThat(testAnexo.getLink()).isEqualTo(UPDATED_LINK);
     }
 
     @Test

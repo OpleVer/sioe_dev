@@ -5,15 +5,14 @@
         .module('sioeDevApp')
         .controller('AnexoDialogController', AnexoDialogController);
 
-    AnexoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Anexo', 'Peticion'];
+    AnexoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Anexo'];
 
-    function AnexoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Anexo, Peticion) {
+    function AnexoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Anexo) {
         var vm = this;
 
         vm.anexo = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.peticions = Peticion.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

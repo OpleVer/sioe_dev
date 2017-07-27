@@ -84,6 +84,38 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "40"
+        },
+        {
+            "fieldName": "tipo_evaluacion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numero_acta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "acta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "acuerdo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cedula",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion_anexo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "link_anexo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "completada",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170724191354",

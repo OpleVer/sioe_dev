@@ -103,6 +103,14 @@
                                 direccion: null,
                                 oficio: null,
                                 cargo_solicitante: null,
+                                tipo_evaluacion: null,
+                                numero_acta: null,
+                                acta: null,
+                                acuerdo: null,
+                                cedula: null,
+                                descripcion_anexo: null,
+                                link_anexo: null,
+                                completada: null,
                                 id: null
                             };
                         }

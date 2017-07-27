@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +43,7 @@ public class AnexoResource {
      */
     @PostMapping("/anexos")
     @Timed
-    public ResponseEntity<Anexo> createAnexo(@Valid @RequestBody Anexo anexo) throws URISyntaxException {
+    public ResponseEntity<Anexo> createAnexo(@RequestBody Anexo anexo) throws URISyntaxException {
         log.debug("REST request to save Anexo : {}", anexo);
         if (anexo.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new anexo cannot already have an ID")).body(null);
@@ -66,7 +65,7 @@ public class AnexoResource {
      */
     @PutMapping("/anexos")
     @Timed
-    public ResponseEntity<Anexo> updateAnexo(@Valid @RequestBody Anexo anexo) throws URISyntaxException {
+    public ResponseEntity<Anexo> updateAnexo(@RequestBody Anexo anexo) throws URISyntaxException {
         log.debug("REST request to update Anexo : {}", anexo);
         if (anexo.getId() == null) {
             return createAnexo(anexo);

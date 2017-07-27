@@ -4,7 +4,6 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -22,62 +21,12 @@ public class Anexo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
-
-    @NotNull
-    @Column(name = "jhi_link", nullable = false)
-    private String link;
-
-    @ManyToOne
-    private Peticion peticion;
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public Anexo descripcion(String descripcion) {
-        this.descripcion = descripcion;
-        return this;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public Anexo link(String link) {
-        this.link = link;
-        return this;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public Peticion getPeticion() {
-        return peticion;
-    }
-
-    public Anexo peticion(Peticion peticion) {
-        this.peticion = peticion;
-        return this;
-    }
-
-    public void setPeticion(Peticion peticion) {
-        this.peticion = peticion;
     }
 
     @Override
@@ -104,8 +53,6 @@ public class Anexo implements Serializable {
     public String toString() {
         return "Anexo{" +
             "id=" + getId() +
-            ", descripcion='" + getDescripcion() + "'" +
-            ", link='" + getLink() + "'" +
             "}";
     }
 }

@@ -54,6 +54,38 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="tipo_evaluacion" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="numero_acta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="acta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="acuerdo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cedula" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="descripcion_anexo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="link_anexo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="completada" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <column name="peticionarios_id" type="bigint">
                 <constraints nullable="false" />
             </column>

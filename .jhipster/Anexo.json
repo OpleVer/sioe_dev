@@ -1,29 +1,7 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipName": "peticion",
-            "otherEntityName": "peticion",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "descripcion",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "link",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        }
-    ],
+    "relationships": [],
+    "fields": [],
     "changelogDate": "20170724195148",
     "dto": "no",
     "service": "no",

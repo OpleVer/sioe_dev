@@ -95,8 +95,6 @@
                     resolve: {
                         entity: function () {
                             return {
-                                descripcion: null,
-                                link: null,
                                 id: null
                             };
                         }

@@ -65,6 +65,30 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_CARGO_SOLICITANTE = "AAAAAAAAAA";
     private static final String UPDATED_CARGO_SOLICITANTE = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_TIPO_EVALUACION = 1;
+    private static final Integer UPDATED_TIPO_EVALUACION = 2;
+
+    private static final String DEFAULT_NUMERO_ACTA = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_ACTA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ACTA = "AAAAAAAAAA";
+    private static final String UPDATED_ACTA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ACUERDO = "AAAAAAAAAA";
+    private static final String UPDATED_ACUERDO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CEDULA = "AAAAAAAAAA";
+    private static final String UPDATED_CEDULA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPCION_ANEXO = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPCION_ANEXO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LINK_ANEXO = "AAAAAAAAAA";
+    private static final String UPDATED_LINK_ANEXO = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_COMPLETADA = false;
+    private static final Boolean UPDATED_COMPLETADA = true;
+
     @Autowired
     private PeticionRepository peticionRepository;
 
@@ -109,7 +133,15 @@ public class PeticionResourceIntTest {
             .solicitante(DEFAULT_SOLICITANTE)
             .direccion(DEFAULT_DIRECCION)
             .oficio(DEFAULT_OFICIO)
-            .cargo_solicitante(DEFAULT_CARGO_SOLICITANTE);
+            .cargo_solicitante(DEFAULT_CARGO_SOLICITANTE)
+            .tipo_evaluacion(DEFAULT_TIPO_EVALUACION)
+            .numero_acta(DEFAULT_NUMERO_ACTA)
+            .acta(DEFAULT_ACTA)
+            .acuerdo(DEFAULT_ACUERDO)
+            .cedula(DEFAULT_CEDULA)
+            .descripcion_anexo(DEFAULT_DESCRIPCION_ANEXO)
+            .link_anexo(DEFAULT_LINK_ANEXO)
+            .completada(DEFAULT_COMPLETADA);
         // Add required entity
         Peticionario peticionarios = PeticionarioResourceIntTest.createEntity(em);
         em.persist(peticionarios);
@@ -151,6 +183,14 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion()).isEqualTo(DEFAULT_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
         assertThat(testPeticion.getCargo_solicitante()).isEqualTo(DEFAULT_CARGO_SOLICITANTE);
+        assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(DEFAULT_TIPO_EVALUACION);
+        assertThat(testPeticion.getNumero_acta()).isEqualTo(DEFAULT_NUMERO_ACTA);
+        assertThat(testPeticion.getActa()).isEqualTo(DEFAULT_ACTA);
+        assertThat(testPeticion.getAcuerdo()).isEqualTo(DEFAULT_ACUERDO);
+        assertThat(testPeticion.getCedula()).isEqualTo(DEFAULT_CEDULA);
+        assertThat(testPeticion.getDescripcion_anexo()).isEqualTo(DEFAULT_DESCRIPCION_ANEXO);
+        assertThat(testPeticion.getLink_anexo()).isEqualTo(DEFAULT_LINK_ANEXO);
+        assertThat(testPeticion.isCompletada()).isEqualTo(DEFAULT_COMPLETADA);
     }
 
     @Test
@@ -316,7 +356,15 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].solicitante").value(hasItem(DEFAULT_SOLICITANTE.toString())))
             .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION.toString())))
             .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())))
-            .andExpect(jsonPath("$.[*].cargo_solicitante").value(hasItem(DEFAULT_CARGO_SOLICITANTE.toString())));
+            .andExpect(jsonPath("$.[*].cargo_solicitante").value(hasItem(DEFAULT_CARGO_SOLICITANTE.toString())))
+            .andExpect(jsonPath("$.[*].tipo_evaluacion").value(hasItem(DEFAULT_TIPO_EVALUACION)))
+            .andExpect(jsonPath("$.[*].numero_acta").value(hasItem(DEFAULT_NUMERO_ACTA.toString())))
+            .andExpect(jsonPath("$.[*].acta").value(hasItem(DEFAULT_ACTA.toString())))
+            .andExpect(jsonPath("$.[*].acuerdo").value(hasItem(DEFAULT_ACUERDO.toString())))
+            .andExpect(jsonPath("$.[*].cedula").value(hasItem(DEFAULT_CEDULA.toString())))
+            .andExpect(jsonPath("$.[*].descripcion_anexo").value(hasItem(DEFAULT_DESCRIPCION_ANEXO.toString())))
+            .andExpect(jsonPath("$.[*].link_anexo").value(hasItem(DEFAULT_LINK_ANEXO.toString())))
+            .andExpect(jsonPath("$.[*].completada").value(hasItem(DEFAULT_COMPLETADA.booleanValue())));
     }
 
     @Test
@@ -337,7 +385,15 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.solicitante").value(DEFAULT_SOLICITANTE.toString()))
             .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION.toString()))
             .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()))
-            .andExpect(jsonPath("$.cargo_solicitante").value(DEFAULT_CARGO_SOLICITANTE.toString()));
+            .andExpect(jsonPath("$.cargo_solicitante").value(DEFAULT_CARGO_SOLICITANTE.toString()))
+            .andExpect(jsonPath("$.tipo_evaluacion").value(DEFAULT_TIPO_EVALUACION))
+            .andExpect(jsonPath("$.numero_acta").value(DEFAULT_NUMERO_ACTA.toString()))
+            .andExpect(jsonPath("$.acta").value(DEFAULT_ACTA.toString()))
+            .andExpect(jsonPath("$.acuerdo").value(DEFAULT_ACUERDO.toString()))
+            .andExpect(jsonPath("$.cedula").value(DEFAULT_CEDULA.toString()))
+            .andExpect(jsonPath("$.descripcion_anexo").value(DEFAULT_DESCRIPCION_ANEXO.toString()))
+            .andExpect(jsonPath("$.link_anexo").value(DEFAULT_LINK_ANEXO.toString()))
+            .andExpect(jsonPath("$.completada").value(DEFAULT_COMPLETADA.booleanValue()));
     }
 
     @Test
@@ -365,7 +421,15 @@ public class PeticionResourceIntTest {
             .solicitante(UPDATED_SOLICITANTE)
             .direccion(UPDATED_DIRECCION)
             .oficio(UPDATED_OFICIO)
-            .cargo_solicitante(UPDATED_CARGO_SOLICITANTE);
+            .cargo_solicitante(UPDATED_CARGO_SOLICITANTE)
+            .tipo_evaluacion(UPDATED_TIPO_EVALUACION)
+            .numero_acta(UPDATED_NUMERO_ACTA)
+            .acta(UPDATED_ACTA)
+            .acuerdo(UPDATED_ACUERDO)
+            .cedula(UPDATED_CEDULA)
+            .descripcion_anexo(UPDATED_DESCRIPCION_ANEXO)
+            .link_anexo(UPDATED_LINK_ANEXO)
+            .completada(UPDATED_COMPLETADA);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -384,6 +448,14 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion()).isEqualTo(UPDATED_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
         assertThat(testPeticion.getCargo_solicitante()).isEqualTo(UPDATED_CARGO_SOLICITANTE);
+        assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(UPDATED_TIPO_EVALUACION);
+        assertThat(testPeticion.getNumero_acta()).isEqualTo(UPDATED_NUMERO_ACTA);
+        assertThat(testPeticion.getActa()).isEqualTo(UPDATED_ACTA);
+        assertThat(testPeticion.getAcuerdo()).isEqualTo(UPDATED_ACUERDO);
+        assertThat(testPeticion.getCedula()).isEqualTo(UPDATED_CEDULA);
+        assertThat(testPeticion.getDescripcion_anexo()).isEqualTo(UPDATED_DESCRIPCION_ANEXO);
+        assertThat(testPeticion.getLink_anexo()).isEqualTo(UPDATED_LINK_ANEXO);
+        assertThat(testPeticion.isCompletada()).isEqualTo(UPDATED_COMPLETADA);
     }
 
     @Test

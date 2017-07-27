@@ -1,5 +1,5 @@
 <div>
-    <h2>Peticions</h2>
+    <h2>Bitacora de Peticiones</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="peticion.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Peticion
+                        Nueva Solicitud
                     </span>
                 </button>
             </div>
@@ -18,36 +18,57 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="numero_peticion"><span>Numero Peticion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span>Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="acto_certificar"><span>Acto Certificar</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="acto_certificar"><span>Acto Certificar</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="responsable"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="solicitante"><span>Solicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="direccion"><span>Direccion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="oficio"><span>Oficio</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cargo_solicitante"><span>Cargo Solicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipo_evaluacion"><span>Tipo Evaluacion</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="numero_acta"><span>Numero Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="acta"><span>Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acuerdo"><span>Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cedula"><span>Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion_anexo"><span>Descripcion Anexo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="link_anexo"><span>Link Anexo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="completada"><span>Completada</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="peticionarios.peticionarios"><span>Peticionarios</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="responsables.tipo"><span>Responsables</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="responsables.tipo"><span>Responsables</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="numero_acta"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numero_acta"><span>Estatus</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="peticion in vm.peticions track by peticion.id">
-                    <td><a ui-sref="peticion-detail({id:peticion.id})">{{peticion.id}}</a></td>
+                    <!--<td><a ui-sref="peticion-detail({id:peticion.id})">{{peticion.id}}</a></td>-->
                     <td>{{peticion.numero_peticion}}</td>
                         <td>{{peticion.fecha | date:'mediumDate'}}</td>
-                    <td>{{peticion.acto_certificar}}</td>
+                    <!--<td>{{peticion.acto_certificar}}</td>
                     <td>{{peticion.responsable}}</td>
                     <td>{{peticion.solicitante}}</td>
                     <td>{{peticion.direccion}}</td>
                     <td>{{peticion.oficio}}</td>
                     <td>{{peticion.cargo_solicitante}}</td>
+                    <td>{{peticion.tipo_evaluacion}}</td>-->
+                    <td>{{peticion.numero_acta}}</td>
+                    <!--<td>{{peticion.acta}}</td>
+                    <td>{{peticion.acuerdo}}</td>
+                    <td>{{peticion.cedula}}</td>
+                    <td>{{peticion.descripcion_anexo}}</td>
+                    <td>{{peticion.link_anexo}}</td>
+                    <td>{{peticion.completada}}</td>
                     <td>
                         <a ui-sref="peticionario-detail({id:peticion.peticionarios.id})">{{peticion.peticionarios.peticionarios}}</a>
+                    </td>-->
+                    <td>
+                        {{peticion.responsables.tipo}}
                     </td>
                     <td>
-                        <a ui-sref="responsable-detail({id:peticion.responsables.id})">{{peticion.responsables.tipo}}</a>
+                         {{peticion.tipo_evaluacion}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
