@@ -42,9 +42,9 @@
           </div>
             <div class="form-group">
                 <label class="control-label" for="field_direccion">Direccion</label>
-                <input type="text" class="form-control" name="direccion" id="field_direccion"
+                <textarea rows="2"cols="80"class="form-control"name="direccion" id="field_direccion"
                         ng-model="vm.peticion.direccion"
-                        required ng-maxlength="200"/>
+                        required ng-maxlength="200"></textarea>
                 <div ng-show="editForm.direccion.$invalid">
                     <p class="help-block"
                         ng-show="editForm.direccion.$error.required">
@@ -106,10 +106,10 @@
             </div>
         </div>
         <div class="form-group">
-            <h4 class="control-label" for="field_acto_certificar">Acto Certificar</h4>
-            <input type="text" class="form-control" name="acto_certificar" id="field_acto_certificar"
+            <h4 class="control-label" for="field_acto_certificar">Acto a Certificar</h4>
+            <textarea rows="5" cols="80"class="form-control" name="acto_certificar" id="field_acto_certificar"
                     ng-model="vm.peticion.acto_certificar"
-                    required/>
+                    required></textarea>
             <div ng-show="editForm.acto_certificar.$invalid">
                 <p class="help-block"
                     ng-show="editForm.acto_certificar.$error.required">
@@ -207,10 +207,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
         </button>
     </div>
 </form>
