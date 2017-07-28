@@ -1,12 +1,28 @@
 
 <div>
-    <h2><span>Peticion</span> {{vm.peticion.id}}</h2>
+    <h2><span>Expediente Peticion</span> {{vm.peticion.numero_peticion}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Numero Peticion</span></dt>
         <dd>
             <span>{{vm.peticion.numero_peticion}}</span>
+        </dd>
+        <dt><span>Peticionario</span></dt>
+        <dd>
+            <span>{{vm.peticion.peticionarios.nombre}}</span>
+        </dd>
+        <dt><span>Direccion</span></dt>
+        <dd>
+            <span>{{vm.peticion.direccion}}</span>
+        </dd>
+        <dt><span>Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.solicitante}}</span>
+        </dd>
+        <dt><span>Cargo Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.cargo_solicitante}}</span>
         </dd>
         <dt><span>Fecha</span></dt>
         <dd>
@@ -16,72 +32,56 @@
         <dd>
             <span>{{vm.peticion.acto_certificar}}</span>
         </dd>
+        <dt><span>Responsables</span></dt>
+        <dd>
+            <span>{{vm.peticion.responsables.tipo}}</span>
+        </dd>
         <dt><span>Responsable</span></dt>
         <dd>
             <span>{{vm.peticion.responsable}}</span>
-        </dd>
-        <dt><span>Solicitante</span></dt>
-        <dd>
-            <span>{{vm.peticion.solicitante}}</span>
-        </dd>
-        <dt><span>Direccion</span></dt>
-        <dd>
-            <span>{{vm.peticion.direccion}}</span>
         </dd>
         <dt><span>Oficio</span></dt>
         <dd>
             <span>{{vm.peticion.oficio}}</span>
         </dd>
-        <dt><span>Cargo Solicitante</span></dt>
-        <dd>
-            <span>{{vm.peticion.cargo_solicitante}}</span>
-        </dd>
-        <dt><span>Tipo Evaluacion</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.tipo_evaluacion"><span>Tipo Evaluacion</span></dt>
+        <dd ng-if="vm.peticion.tipo_evaluacion">
             <span>{{vm.peticion.tipo_evaluacion}}</span>
         </dd>
-        <dt><span>Numero Acta</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.numero_acta"><span>Numero Acta</span></dt>
+        <dd ng-if="vm.peticion.numero_acta">
             <span>{{vm.peticion.numero_acta}}</span>
         </dd>
-        <dt><span>Acta</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.acta"><span>Acta</span></dt>
+        <dd ng-if="vm.peticion.acta">
             <span>{{vm.peticion.acta}}</span>
         </dd>
-        <dt><span>Acuerdo</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.acuerdo"><span>Acuerdo</span></dt>
+        <dd ng-if="vm.peticion.acuerdo">
             <span>{{vm.peticion.acuerdo}}</span>
         </dd>
-        <dt><span>Cedula</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.cedula"><span>Cedula</span></dt>
+        <dd ng-if="vm.peticion.cedula">
             <span>{{vm.peticion.cedula}}</span>
         </dd>
-        <dt><span>Descripcion Anexo</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.descripcion_anexo"><span>Descripcion Anexo</span></dt>
+        <dd ng-if="vm.peticion.descripcion_anexo">
             <span>{{vm.peticion.descripcion_anexo}}</span>
         </dd>
-        <dt><span>Link Anexo</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.link_anexo"><span>Link Anexo</span></dt>
+        <dd ng-if="vm.peticion.link_anexo">
             <span>{{vm.peticion.link_anexo}}</span>
         </dd>
         <dt><span>Completada</span></dt>
         <dd>
             <span>{{vm.peticion.completada}}</span>
         </dd>
-        <dt><span>Peticionarios</span></dt>
-        <dd>
-            <a ui-sref="peticionario-detail({id:vm.peticion.peticionarios.id})">{{vm.peticion.peticionarios.peticionarios}}</a>
-        </dd>
-        <dt><span>Responsables</span></dt>
-        <dd>
-            <a ui-sref="responsable-detail({id:vm.peticion.responsables.id})">{{vm.peticion.responsables.tipo}}</a>
-        </dd>
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Atras</span>
     </button>
 
     <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
