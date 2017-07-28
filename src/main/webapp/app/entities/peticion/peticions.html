@@ -79,17 +79,29 @@
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="peticion.edit({id:peticion.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
+                                    ui-sref="peticion.anexo({id:peticion.id})"
+                                    class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-paperclip"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="peticion.delete({id:peticion.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                    ui-sref="peticion.evaluacion({id:peticion.id})"
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-flag"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
+                            <button type="submit"
+                                    ui-sref="peticion.remitir({id:peticion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-transfer"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                          <!--  <button type="submit"
+                                    ui-sref="peticion.delete({id:peticion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-transfer"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>-->
                         </div>
                     </td>
                 </tr>

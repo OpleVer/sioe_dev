@@ -147,6 +147,85 @@
                 });
             }]
         })
+
+
+        .state('peticion.anexo', {
+            parent: 'peticion',
+            url: '/{id}/anexo',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-anexo.html',
+                    controller: 'PeticionAnexoController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+
+        .state('peticion.evaluacion', {
+            parent: 'peticion',
+            url: '/{id}/evaluacion',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-evaluacion.html',
+                    controller: 'PeticionAnexoController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('peticion.remitir', {
+            parent: 'peticion',
+            url: '/{id}/remitir',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-remitir.html',
+                    controller: 'PeticionAnexoController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+
         .state('peticion.delete', {
             parent: 'peticion',
             url: '/{id}/delete',
