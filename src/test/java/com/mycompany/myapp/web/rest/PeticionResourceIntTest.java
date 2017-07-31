@@ -65,9 +65,6 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_CARGO_SOLICITANTE = "AAAAAAAAAA";
     private static final String UPDATED_CARGO_SOLICITANTE = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_TIPO_EVALUACION = 1;
-    private static final Integer UPDATED_TIPO_EVALUACION = 2;
-
     private static final String DEFAULT_NUMERO_ACTA = "AAAAAAAAAA";
     private static final String UPDATED_NUMERO_ACTA = "BBBBBBBBBB";
 
@@ -134,7 +131,6 @@ public class PeticionResourceIntTest {
             .direccion(DEFAULT_DIRECCION)
             .oficio(DEFAULT_OFICIO)
             .cargo_solicitante(DEFAULT_CARGO_SOLICITANTE)
-            .tipo_evaluacion(DEFAULT_TIPO_EVALUACION)
             .numero_acta(DEFAULT_NUMERO_ACTA)
             .acta(DEFAULT_ACTA)
             .acuerdo(DEFAULT_ACUERDO)
@@ -183,7 +179,6 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion()).isEqualTo(DEFAULT_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
         assertThat(testPeticion.getCargo_solicitante()).isEqualTo(DEFAULT_CARGO_SOLICITANTE);
-        assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(DEFAULT_TIPO_EVALUACION);
         assertThat(testPeticion.getNumero_acta()).isEqualTo(DEFAULT_NUMERO_ACTA);
         assertThat(testPeticion.getActa()).isEqualTo(DEFAULT_ACTA);
         assertThat(testPeticion.getAcuerdo()).isEqualTo(DEFAULT_ACUERDO);
@@ -357,7 +352,6 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION.toString())))
             .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())))
             .andExpect(jsonPath("$.[*].cargo_solicitante").value(hasItem(DEFAULT_CARGO_SOLICITANTE.toString())))
-            .andExpect(jsonPath("$.[*].tipo_evaluacion").value(hasItem(DEFAULT_TIPO_EVALUACION)))
             .andExpect(jsonPath("$.[*].numero_acta").value(hasItem(DEFAULT_NUMERO_ACTA.toString())))
             .andExpect(jsonPath("$.[*].acta").value(hasItem(DEFAULT_ACTA.toString())))
             .andExpect(jsonPath("$.[*].acuerdo").value(hasItem(DEFAULT_ACUERDO.toString())))
@@ -386,7 +380,6 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION.toString()))
             .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()))
             .andExpect(jsonPath("$.cargo_solicitante").value(DEFAULT_CARGO_SOLICITANTE.toString()))
-            .andExpect(jsonPath("$.tipo_evaluacion").value(DEFAULT_TIPO_EVALUACION))
             .andExpect(jsonPath("$.numero_acta").value(DEFAULT_NUMERO_ACTA.toString()))
             .andExpect(jsonPath("$.acta").value(DEFAULT_ACTA.toString()))
             .andExpect(jsonPath("$.acuerdo").value(DEFAULT_ACUERDO.toString()))
@@ -422,7 +415,6 @@ public class PeticionResourceIntTest {
             .direccion(UPDATED_DIRECCION)
             .oficio(UPDATED_OFICIO)
             .cargo_solicitante(UPDATED_CARGO_SOLICITANTE)
-            .tipo_evaluacion(UPDATED_TIPO_EVALUACION)
             .numero_acta(UPDATED_NUMERO_ACTA)
             .acta(UPDATED_ACTA)
             .acuerdo(UPDATED_ACUERDO)
@@ -448,7 +440,6 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion()).isEqualTo(UPDATED_DIRECCION);
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
         assertThat(testPeticion.getCargo_solicitante()).isEqualTo(UPDATED_CARGO_SOLICITANTE);
-        assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(UPDATED_TIPO_EVALUACION);
         assertThat(testPeticion.getNumero_acta()).isEqualTo(UPDATED_NUMERO_ACTA);
         assertThat(testPeticion.getActa()).isEqualTo(UPDATED_ACTA);
         assertThat(testPeticion.getAcuerdo()).isEqualTo(UPDATED_ACUERDO);

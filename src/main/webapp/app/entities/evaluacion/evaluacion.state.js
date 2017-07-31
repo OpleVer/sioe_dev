@@ -95,11 +95,7 @@
                     resolve: {
                         entity: function () {
                             return {
-                                tipo: null,
-                                numero_acta: null,
-                                acta: null,
-                                acuerdo: null,
-                                cedula: null,
+                                tipo_evaluacion: null,
                                 id: null
                             };
                         }

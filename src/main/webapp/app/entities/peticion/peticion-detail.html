@@ -44,9 +44,9 @@
         <dd>
             <span>{{vm.peticion.oficio}}</span>
         </dd>
-        <dt ng-if="vm.peticion.tipo_evaluacion"><span>Tipo Evaluacion</span></dt>
-        <dd ng-if="vm.peticion.tipo_evaluacion">
-            <span>{{vm.peticion.tipo_evaluacion}}</span>
+        <dt ng-if="vm.peticion.evaluaciones.tipo_evaluacion"><span>Tipo Evaluacion</span></dt>
+        <dd ng-if="vm.peticion.evaluaciones.tipo_evaluacion">
+            <span>{{vm.peticion.evaluaciones.tipo_evaluacion}}</span>
         </dd>
         <dt ng-if="vm.peticion.numero_acta"><span>Numero Acta</span></dt>
         <dd ng-if="vm.peticion.numero_acta">
@@ -72,8 +72,8 @@
         <dd ng-if="vm.peticion.link_anexo">
             <span>{{vm.peticion.link_anexo}}</span>
         </dd>
-        <dt><span>Completada</span></dt>
-        <dd>
+        <dt ng-if="vm.peticion.completada"><span>Completada</span></dt>
+        <dd ng-if="vm.peticion.completada">
             <span>{{vm.peticion.completada}}</span>
         </dd>
     </dl>
@@ -84,8 +84,8 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Atras</span>
     </button>
 
-    <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
+    <!--<button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Actualizar</span>
-    </button>
+    </button>-->
 </div>

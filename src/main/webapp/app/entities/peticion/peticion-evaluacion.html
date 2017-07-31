@@ -28,14 +28,19 @@
                     This field cannot be longer than 32 characters.
                 </p>
             </div>
-
-
         <div class="form-group">
-            <label class="control-label" for="field_tipo_evaluacion">Evaluacion</label>
-            <input type="number" class="form-control" name="tipo_evaluacion" id="field_tipo_evaluacion"
-                    ng-model="vm.peticion.tipo_evaluacion"
-                    />
+            <label for="field_evaluaciones">Evaluacion</label>
+            <select class="form-control" id="field_evaluaciones" name="evaluaciones" ng-model="vm.peticion.evaluaciones" ng-options="evaluacion as evaluacion.tipo_evaluacion for evaluacion in vm.evaluacions track by evaluacion.id">
+                <option value=""></option>
+            </select>
         </div>
+
+
+
+
+
+
+
         <div class="form-group">
             <label class="control-label" for="field_numero_acta">Numero Acta</label>
             <input type="text" class="form-control" name="numero_acta" id="field_numero_acta"

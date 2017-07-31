@@ -3,11 +3,11 @@
 
     angular
         .module('sioeDevApp')
-        .controller('PeticionEvaluacionController', PeticionEvaluacionController);
+        .controller('PeticionAnexoController', PeticionAnexoController);
 
-    PeticionEvaluacionController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Peticion', 'Peticionario', 'Responsable', 'Evaluacion'];
+    PeticionAnexoController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Peticion', 'Peticionario', 'Responsable'];
 
-    function PeticionEvaluacionController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Peticion, Peticionario, Responsable, Evaluacion) {
+    function PeticionAnexoController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Peticion, Peticionario, Responsable) {
         var vm = this;
 
         vm.peticion = entity;
@@ -17,7 +17,6 @@
         vm.save = save;
         vm.peticionarios = Peticionario.query();
         vm.responsables = Responsable.query();
-        vm.evaluacions = Evaluacion.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -19,22 +19,14 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="tipo"><span>Tipo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="numero_acta"><span>Numero Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="acta"><span>Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="acuerdo"><span>Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="cedula"><span>Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipo_evaluacion"><span>Tipo Evaluacion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="evaluacion in vm.evaluacions track by evaluacion.id">
                     <td><a ui-sref="evaluacion-detail({id:evaluacion.id})">{{evaluacion.id}}</a></td>
-                    <td>{{evaluacion.tipo}}</td>
-                    <td>{{evaluacion.numero_acta}}</td>
-                    <td>{{evaluacion.acta}}</td>
-                    <td>{{evaluacion.acuerdo}}</td>
-                    <td>{{evaluacion.cedula}}</td>
+                    <td>{{evaluacion.tipo_evaluacion}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

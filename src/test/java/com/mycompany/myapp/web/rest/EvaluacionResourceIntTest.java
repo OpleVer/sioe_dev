@@ -37,20 +37,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SioeDevApp.class)
 public class EvaluacionResourceIntTest {
 
-    private static final Integer DEFAULT_TIPO = 1;
-    private static final Integer UPDATED_TIPO = 2;
-
-    private static final String DEFAULT_NUMERO_ACTA = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_ACTA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ACTA = "AAAAAAAAAA";
-    private static final String UPDATED_ACTA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ACUERDO = "AAAAAAAAAA";
-    private static final String UPDATED_ACUERDO = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CEDULA = "AAAAAAAAAA";
-    private static final String UPDATED_CEDULA = "BBBBBBBBBB";
+    private static final String DEFAULT_TIPO_EVALUACION = "AAAAAAAAAA";
+    private static final String UPDATED_TIPO_EVALUACION = "BBBBBBBBBB";
 
     @Autowired
     private EvaluacionRepository evaluacionRepository;
@@ -89,11 +77,7 @@ public class EvaluacionResourceIntTest {
      */
     public static Evaluacion createEntity(EntityManager em) {
         Evaluacion evaluacion = new Evaluacion()
-            .tipo(DEFAULT_TIPO)
-            .numero_acta(DEFAULT_NUMERO_ACTA)
-            .acta(DEFAULT_ACTA)
-            .acuerdo(DEFAULT_ACUERDO)
-            .cedula(DEFAULT_CEDULA);
+            .tipo_evaluacion(DEFAULT_TIPO_EVALUACION);
         return evaluacion;
     }
 
@@ -117,11 +101,7 @@ public class EvaluacionResourceIntTest {
         List<Evaluacion> evaluacionList = evaluacionRepository.findAll();
         assertThat(evaluacionList).hasSize(databaseSizeBeforeCreate + 1);
         Evaluacion testEvaluacion = evaluacionList.get(evaluacionList.size() - 1);
-        assertThat(testEvaluacion.getTipo()).isEqualTo(DEFAULT_TIPO);
-        assertThat(testEvaluacion.getNumero_acta()).isEqualTo(DEFAULT_NUMERO_ACTA);
-        assertThat(testEvaluacion.getActa()).isEqualTo(DEFAULT_ACTA);
-        assertThat(testEvaluacion.getAcuerdo()).isEqualTo(DEFAULT_ACUERDO);
-        assertThat(testEvaluacion.getCedula()).isEqualTo(DEFAULT_CEDULA);
+        assertThat(testEvaluacion.getTipo_evaluacion()).isEqualTo(DEFAULT_TIPO_EVALUACION);
     }
 
     @Test
@@ -145,24 +125,6 @@ public class EvaluacionResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTipoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = evaluacionRepository.findAll().size();
-        // set the field null
-        evaluacion.setTipo(null);
-
-        // Create the Evaluacion, which fails.
-
-        restEvaluacionMockMvc.perform(post("/api/evaluacions")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(evaluacion)))
-            .andExpect(status().isBadRequest());
-
-        List<Evaluacion> evaluacionList = evaluacionRepository.findAll();
-        assertThat(evaluacionList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllEvaluacions() throws Exception {
         // Initialize the database
         evaluacionRepository.saveAndFlush(evaluacion);
@@ -172,11 +134,7 @@ public class EvaluacionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(evaluacion.getId().intValue())))
-            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
-            .andExpect(jsonPath("$.[*].numero_acta").value(hasItem(DEFAULT_NUMERO_ACTA.toString())))
-            .andExpect(jsonPath("$.[*].acta").value(hasItem(DEFAULT_ACTA.toString())))
-            .andExpect(jsonPath("$.[*].acuerdo").value(hasItem(DEFAULT_ACUERDO.toString())))
-            .andExpect(jsonPath("$.[*].cedula").value(hasItem(DEFAULT_CEDULA.toString())));
+            .andExpect(jsonPath("$.[*].tipo_evaluacion").value(hasItem(DEFAULT_TIPO_EVALUACION.toString())));
     }
 
     @Test
@@ -190,11 +148,7 @@ public class EvaluacionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(evaluacion.getId().intValue()))
-            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
-            .andExpect(jsonPath("$.numero_acta").value(DEFAULT_NUMERO_ACTA.toString()))
-            .andExpect(jsonPath("$.acta").value(DEFAULT_ACTA.toString()))
-            .andExpect(jsonPath("$.acuerdo").value(DEFAULT_ACUERDO.toString()))
-            .andExpect(jsonPath("$.cedula").value(DEFAULT_CEDULA.toString()));
+            .andExpect(jsonPath("$.tipo_evaluacion").value(DEFAULT_TIPO_EVALUACION.toString()));
     }
 
     @Test
@@ -215,11 +169,7 @@ public class EvaluacionResourceIntTest {
         // Update the evaluacion
         Evaluacion updatedEvaluacion = evaluacionRepository.findOne(evaluacion.getId());
         updatedEvaluacion
-            .tipo(UPDATED_TIPO)
-            .numero_acta(UPDATED_NUMERO_ACTA)
-            .acta(UPDATED_ACTA)
-            .acuerdo(UPDATED_ACUERDO)
-            .cedula(UPDATED_CEDULA);
+            .tipo_evaluacion(UPDATED_TIPO_EVALUACION);
 
         restEvaluacionMockMvc.perform(put("/api/evaluacions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -230,11 +180,7 @@ public class EvaluacionResourceIntTest {
         List<Evaluacion> evaluacionList = evaluacionRepository.findAll();
         assertThat(evaluacionList).hasSize(databaseSizeBeforeUpdate);
         Evaluacion testEvaluacion = evaluacionList.get(evaluacionList.size() - 1);
-        assertThat(testEvaluacion.getTipo()).isEqualTo(UPDATED_TIPO);
-        assertThat(testEvaluacion.getNumero_acta()).isEqualTo(UPDATED_NUMERO_ACTA);
-        assertThat(testEvaluacion.getActa()).isEqualTo(UPDATED_ACTA);
-        assertThat(testEvaluacion.getAcuerdo()).isEqualTo(UPDATED_ACUERDO);
-        assertThat(testEvaluacion.getCedula()).isEqualTo(UPDATED_CEDULA);
+        assertThat(testEvaluacion.getTipo_evaluacion()).isEqualTo(UPDATED_TIPO_EVALUACION);
     }
 
     @Test

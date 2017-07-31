@@ -59,9 +59,6 @@ public class Peticion implements Serializable {
     @Column(name = "cargo_solicitante", length = 40, nullable = false)
     private String cargo_solicitante;
 
-    @Column(name = "tipo_evaluacion")
-    private Integer tipo_evaluacion;
-
     @Column(name = "numero_acta")
     private String numero_acta;
 
@@ -90,6 +87,9 @@ public class Peticion implements Serializable {
     @ManyToOne(optional = false)
     @NotNull
     private Responsable responsables;
+
+    @ManyToOne
+    private Evaluacion evaluaciones;
 
     public Long getId() {
         return id;
@@ -201,19 +201,6 @@ public class Peticion implements Serializable {
 
     public void setCargo_solicitante(String cargo_solicitante) {
         this.cargo_solicitante = cargo_solicitante;
-    }
-
-    public Integer getTipo_evaluacion() {
-        return tipo_evaluacion;
-    }
-
-    public Peticion tipo_evaluacion(Integer tipo_evaluacion) {
-        this.tipo_evaluacion = tipo_evaluacion;
-        return this;
-    }
-
-    public void setTipo_evaluacion(Integer tipo_evaluacion) {
-        this.tipo_evaluacion = tipo_evaluacion;
     }
 
     public String getNumero_acta() {
@@ -333,6 +320,19 @@ public class Peticion implements Serializable {
         this.responsables = responsable;
     }
 
+    public Evaluacion getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public Peticion evaluaciones(Evaluacion evaluacion) {
+        this.evaluaciones = evaluacion;
+        return this;
+    }
+
+    public void setEvaluaciones(Evaluacion evaluacion) {
+        this.evaluaciones = evaluacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -365,7 +365,6 @@ public class Peticion implements Serializable {
             ", direccion='" + getDireccion() + "'" +
             ", oficio='" + getOficio() + "'" +
             ", cargo_solicitante='" + getCargo_solicitante() + "'" +
-            ", tipo_evaluacion='" + getTipo_evaluacion() + "'" +
             ", numero_acta='" + getNumero_acta() + "'" +
             ", acta='" + getActa() + "'" +
             ", acuerdo='" + getAcuerdo() + "'" +

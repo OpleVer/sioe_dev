@@ -18,6 +18,12 @@
                 "required"
             ],
             "otherEntityField": "tipo"
+        },
+        {
+            "relationshipName": "evaluaciones",
+            "otherEntityName": "evaluacion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "tipo_evaluacion"
         }
     ],
     "fields": [
@@ -84,10 +90,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "40"
-        },
-        {
-            "fieldName": "tipo_evaluacion",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "numero_acta",

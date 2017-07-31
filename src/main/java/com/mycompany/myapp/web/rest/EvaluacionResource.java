@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -50,7 +49,7 @@ public class EvaluacionResource {
      */
     @PostMapping("/evaluacions")
     @Timed
-    public ResponseEntity<Evaluacion> createEvaluacion(@Valid @RequestBody Evaluacion evaluacion) throws URISyntaxException {
+    public ResponseEntity<Evaluacion> createEvaluacion(@RequestBody Evaluacion evaluacion) throws URISyntaxException {
         log.debug("REST request to save Evaluacion : {}", evaluacion);
         if (evaluacion.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new evaluacion cannot already have an ID")).body(null);
@@ -72,7 +71,7 @@ public class EvaluacionResource {
      */
     @PutMapping("/evaluacions")
     @Timed
-    public ResponseEntity<Evaluacion> updateEvaluacion(@Valid @RequestBody Evaluacion evaluacion) throws URISyntaxException {
+    public ResponseEntity<Evaluacion> updateEvaluacion(@RequestBody Evaluacion evaluacion) throws URISyntaxException {
         log.debug("REST request to update Evaluacion : {}", evaluacion);
         if (evaluacion.getId() == null) {
             return createEvaluacion(evaluacion);

@@ -62,7 +62,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
+                    templateUrl: 'app/entities/peticion/peticion-editar.html',
                     controller: 'PeticionDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -103,7 +103,6 @@
                                 direccion: null,
                                 oficio: null,
                                 cargo_solicitante: null,
-                                tipo_evaluacion: null,
                                 numero_acta: null,
                                 acta: null,
                                 acuerdo: null,
@@ -147,7 +146,30 @@
                 });
             }]
         })
-
+        .state('peticion.delete', {
+            parent: 'peticion',
+            url: '/{id}/delete',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-delete-dialog.html',
+                    controller: 'PeticionDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
 
         .state('peticion.anexo', {
             parent: 'peticion',
@@ -224,32 +246,9 @@
                     $state.go('^');
                 });
             }]
-        })
-
-        .state('peticion.delete', {
-            parent: 'peticion',
-            url: '/{id}/delete',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-delete-dialog.html',
-                    controller: 'PeticionDeleteController',
-                    controllerAs: 'vm',
-                    size: 'md',
-                    resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
         });
+
+
     }
 
 })();

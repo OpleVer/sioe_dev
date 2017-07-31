@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="responsable"/>
 
+        <addForeignKeyConstraint baseColumnNames="evaluaciones_id"
+                                 baseTableName="peticion"
+                                 constraintName="fk_peticion_evaluaciones_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="evaluacion"/>
+
     </changeSet>
 </databaseChangeLog>

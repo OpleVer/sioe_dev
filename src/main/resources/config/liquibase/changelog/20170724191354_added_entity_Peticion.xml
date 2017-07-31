@@ -54,10 +54,6 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="tipo_evaluacion" type="integer">
-                <constraints nullable="true" />
-            </column>
-
             <column name="numero_acta" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -92,6 +88,10 @@
 
             <column name="responsables_id" type="bigint">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="evaluaciones_id" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

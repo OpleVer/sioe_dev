@@ -3,26 +3,7 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "tipo",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "numero_acta",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "acta",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "acuerdo",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "cedula",
+            "fieldName": "tipo_evaluacion",
             "fieldType": "String"
         }
     ],
