@@ -35,7 +35,7 @@
                     ng-model="vm.peticion.descripcion_anexo"
                     /> </textarea>
         </div>
-        <div class="form-group">
+        <div class="ng-hide">
             <label class="control-label" for="field_link_anexo">Anexos</label>
             <input type="text" class="form-control" name="link_anexo" id="field_link_anexo"
                     ng-model="vm.peticion.link_anexo"
@@ -45,12 +45,63 @@
 
 
     </div>
-    <div class="modal-footer">
+    <div class="ng-hide">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" id="t"class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
         </button>
     </div>
 </form>
+<form  role="form" action="http://192.168.21.147/webservice/subiranexo.php" method="post" id="upload" enctype="multipart/form-data" >
+  <div class="modal-body">
+
+
+  <div class="form-group">
+    <h4 class="control-label" for="fi">Anexo</h4>
+    <input type="file" name="file" id="fi">
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <input type="submit" value="Save" class="btn btn-primary">
+  </div>
+</div>
+</form>
+<script>
+
+ $(function(){
+     $("#upload").on("submit", function(e){
+
+
+         e.preventDefault();
+         var f = $(this);
+         var formData = new FormData(document.getElementById("upload"));
+         formData.append("dato", "valor");
+
+         $.ajax({
+             url: "http://192.168.21.147/webservice/subiranexo.php",
+             type: "post",
+              dataType: "html",
+              data: formData,
+              cache: false,
+              contentType: false,
+     processData: false,
+success:function(data){
+  //console.log(data);
+  var aux=$('#field_link_anexo').val().concat(data,',');
+  $('#field_link_anexo').val(aux);
+
+$("#field_link_anexo").trigger('input');
+  $("#field_link_anexo").trigger('change');
+  $("#t").click();
+}
+
+         });
+
+     });
+ });
+ </script>

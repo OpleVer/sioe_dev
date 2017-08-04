@@ -42,7 +42,8 @@
         </dd>
         <dt><span>Oficio</span></dt>
         <dd>
-            <span>{{vm.peticion.oficio}}</span>
+          <a class="ng-hide" href="http://192.168.21.147/webservice/archivos/{{vm.peticion.oficio}}" id="aux">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span></a>
+          <iframe id="em" src="" width="500" height="475"></iframe>
         </dd>
         <dt ng-if="vm.peticion.evaluaciones.tipo_evaluacion"><span>Tipo Evaluacion</span></dt>
         <dd ng-if="vm.peticion.evaluaciones.tipo_evaluacion">
@@ -54,15 +55,18 @@
         </dd>
         <dt ng-if="vm.peticion.acta"><span>Acta</span></dt>
         <dd ng-if="vm.peticion.acta">
-            <span>{{vm.peticion.acta}}</span>
+            <a class="ng-hide" href="http://192.168.21.147/webservice/archivos/{{vm.peticion.acta}}" id="auxacta">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span></a>
+            <iframe id="emacta" src="" width="500" height="475"></iframe>
         </dd>
         <dt ng-if="vm.peticion.acuerdo"><span>Acuerdo</span></dt>
         <dd ng-if="vm.peticion.acuerdo">
-            <span>{{vm.peticion.acuerdo}}</span>
+          <a class="ng-hide" href="http://192.168.21.147/webservice/archivos/{{vm.peticion.acuerdo}}" id="auxacuerdo">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span></a>
+          <iframe id="emacuerdo" src="" width="500" height="475"></iframe>
         </dd>
         <dt ng-if="vm.peticion.cedula"><span>Cedula</span></dt>
         <dd ng-if="vm.peticion.cedula">
-            <span>{{vm.peticion.cedula}}</span>
+          <a class="ng-hide" href="http://192.168.21.147/webservice/archivos/{{vm.peticion.cedula}}" id="auxcedula">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span></a>
+          <iframe id="emcedula" src="" width="500" height="475"></iframe>
         </dd>
         <dt ng-if="vm.peticion.descripcion_anexo"><span>Descripcion Anexo</span></dt>
         <dd ng-if="vm.peticion.descripcion_anexo">
@@ -70,7 +74,12 @@
         </dd>
         <dt ng-if="vm.peticion.link_anexo"><span>Anexos</span></dt>
         <dd ng-if="vm.peticion.link_anexo">
-            <span>{{vm.peticion.link_anexo}}</span>
+          <div class="ad_a">
+
+          </div>
+          <a class="ng-hide" href="{{vm.peticion.link_anexo}}" id="v_a"></a>
+
+            <span class="ng-hide">{{vm.peticion.link_anexo}}</span>
         </dd>
         <dt ng-if="vm.peticion.completada"><span>Completada</span></dt>
         <dd ng-if="vm.peticion.completada">
@@ -84,8 +93,36 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Atras</span>
     </button>
 
+
     <!--<button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Actualizar</span>
     </button>-->
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+var i=1;
+  var v_anexos=$("#v_a").attr("href");
+  var v_anexos = v_anexos.split(',');
+  $.each(v_anexos, function(index,value) {
+    var ht='<a href="http://192.168.21.147/webservice/archivos/'.concat(value,'"  download class="btn btn-default btn-lg">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Anexo',i,'</a>');
+        if (value!="") {
+  $( ".ad_a" ).append( ht );
+        }
+i++;
+});
+
+
+        //console.log(vm.peticion.acta);
+        //alert("El texto del botón es --> " + $("#em").attr("src"));
+        var aux= $("#aux").attr("href");
+        $("#em").attr("src",aux);
+        var auxacta= $("#auxacta").attr("href");
+        $("#emacta").attr("src",auxacta);
+        var auxacuerdo= $("#auxacuerdo").attr("href");
+        $("#emacuerdo").attr("src",auxacuerdo);
+        var auxcedula= $("#auxcedula").attr("href");
+        $("#emcedula").attr("src",auxcedula);
+
+});
+</script>
