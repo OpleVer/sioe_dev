@@ -86,7 +86,7 @@
             <span>{{vm.peticion.completada}}</span>
         </dd>
     </dl>
-
+<button type="button" name="button" id="mostrar">mostar</button>
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
@@ -101,16 +101,6 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-var i=1;
-  var v_anexos=$("#v_a").attr("href");
-  var v_anexos = v_anexos.split(',');
-  $.each(v_anexos, function(index,value) {
-    var ht='<a href="http://192.168.21.147/webservice/archivos/'.concat(value,'"  download class="btn btn-default btn-lg">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Anexo',i,'</a>');
-        if (value!="") {
-  $( ".ad_a" ).append( ht );
-        }
-i++;
-});
 
 
         //console.log(vm.peticion.acta);
@@ -125,4 +115,19 @@ i++;
         $("#emcedula").attr("src",auxcedula);
 
 });
+
+  $('#mostrar').click(function(){
+    var i=1;
+      var v_anexos=$("#v_a").attr("href");
+      var v_anexos = v_anexos.split(',');
+      $.each(v_anexos, function(index,value) {
+        var ht='<a href="http://192.168.21.147/webservice/archivos/'.concat(value,'"  download class="btn btn-default btn-lg">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Anexo',i,'</a>');
+            if (value!="") {
+      $( ".ad_a" ).append( ht );
+            }
+    i++;
+    });
+
+
+  });
 </script>
