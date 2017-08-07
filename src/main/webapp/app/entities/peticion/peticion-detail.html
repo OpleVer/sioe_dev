@@ -68,15 +68,13 @@
           <a class="ng-hide" href="http://192.168.21.147/webservice/archivos/{{vm.peticion.cedula}}" id="auxcedula">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span></a>
           <iframe id="emcedula" src="" width="500" height="475"></iframe>
         </dd>
-        <dt ng-if="vm.peticion.descripcion_anexo"><span>Descripcion Anexo</span></dt>
+        <dt ng-if="vm.peticion.descripcion_anexo"><span>Descripcion de Anexos</span></dt>
         <dd ng-if="vm.peticion.descripcion_anexo">
             <span>{{vm.peticion.descripcion_anexo}}</span>
         </dd>
         <dt ng-if="vm.peticion.link_anexo"><span>Anexos</span></dt>
-        <dd ng-if="vm.peticion.link_anexo">
-          <div class="ad_a">
+        <dd ng-if="vm.peticion.link_anexo" class="ad_a">
 
-          </div>
           <a class="ng-hide" href="{{vm.peticion.link_anexo}}" id="v_a"></a>
 
             <span class="ng-hide">{{vm.peticion.link_anexo}}</span>
@@ -104,7 +102,7 @@ $(document).ready(function(){
 
   var i=1;
     var v_anexos=$("#v_a").attr("href");
-    if (v_anexos="") {
+    if (v_anexos!="") {
       var v_anexos = v_anexos.split(',');
       $.each(v_anexos, function(index,value) {
         var ht='<a href="http://192.168.21.147/webservice/archivos/'.concat(value,'"  download class="btn btn-default btn-lg">  <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Anexo',i,'</a>');

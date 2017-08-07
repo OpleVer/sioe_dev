@@ -35,12 +35,6 @@
             </select>
         </div>
 
-
-
-
-
-
-
         <div class="form-group">
             <label class="control-label" for="field_numero_acta">Numero Acta</label>
             <input type="text" class="form-control" name="numero_acta" id="field_numero_acta"
@@ -65,11 +59,34 @@
                     ng-model="vm.peticion.cedula"
                     />
         </div>
-        <div class="form-group">
+        <form  role="form" action="http://192.168.21.147/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
+          <div class="form-group">
+            <h4 class="control-label" for="acta">Acta</h4>
+            <input type="file" name="acta" id="acta">
+          </div>
+          <div class="form-group">
+            <h4 class="control-label" for="acuerdo">Acuerdo</h4>
+            <input type="file" name="acuerdo" id="acuerdo">
+          </div>
+          <div class="form-group">
+            <h4 class="control-label" for="cedula">Cedula</h4>
+            <input type="file" name="cedula" id="cedula">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default"  data-dismiss="modal" ng-click="vm.clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+            </button>
+            <input type="submit" value="Guardar" class="btn btn-primary">
+          </div>
+
+        </form>
+
+        <!--<div class="form-group">
             <label class="control-label" for="field_completada">Finalizar Evaluacion</label>
                 <input type="checkbox" name="completada" id="field_completada"
                           ng-model="vm.peticion.completada"/>
-        </div>
+        </div>-->
 
 
 
@@ -82,34 +99,8 @@
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
         </button>
     </div>
+  </div>
 </form>
-
-<form  role="form" action="http://192.168.21.147/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
-  <div class="modal-body">
-
-
-  <div class="form-group">
-    <h4 class="control-label" for="acta">Acta</h4>
-    <input type="file" name="acta" id="acta">
-  </div>
-  <div class="form-group">
-    <h4 class="control-label" for="acuerdo">Acuerdo</h4>
-    <input type="file" name="acuerdo" id="acuerdo">
-  </div>
-  <div class="form-group">
-    <h4 class="control-label" for="cedula">Cedula</h4>
-    <input type="file" name="cedula" id="cedula">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default"  data-dismiss="modal" ng-click="vm.clear()">
-        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-    </button>
-    <input type="submit" value="Guardar" class="btn btn-primary">
-  </div>
-</div>
-</form>
-
 <script>
 
  $(function(){

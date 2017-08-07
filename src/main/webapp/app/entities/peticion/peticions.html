@@ -19,8 +19,8 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
-                    <th jh-sort-by="numero_peticion"><span>Numero Peticion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="fecha"><span>Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span>Numero Peticion</span></th>
+                    <th><span>Fecha</span></th>
                     <!--<th jh-sort-by="acto_certificar"><span>Acto Certificar</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="responsable"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="solicitante"><span>Solicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -28,7 +28,7 @@
                     <th jh-sort-by="oficio"><span>Oficio</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cargo_solicitante"><span>Cargo Solicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="tipo_evaluacion"><span>Tipo Evaluacion</span> <span class="glyphicon glyphicon-sort"></span></th>-->
-                    <th jh-sort-by="numero_acta"><span>Numero Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span>Numero Acta</span></th>
                     <!--<th jh-sort-by="acta"><span>Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="acuerdo"><span>Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cedula"><span>Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -37,8 +37,8 @@
                     <th jh-sort-by="completada"><span>Completada</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="peticionarios.peticionarios"><span>Peticionarios</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="responsables.tipo"><span>Responsables</span> <span class="glyphicon glyphicon-sort"></span></th>-->
-                    <th jh-sort-by="numero_acta"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="numero_acta"><span>Estatus</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span>Responsable</span></th>
+                    <th><span>Estatus</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
                 <tr ng-repeat="peticion in vm.peticions track by peticion.id">
                     <!--<td><a ui-sref="peticion-detail({id:peticion.id})">{{peticion.id}}</a></td>-->
                     <td>{{peticion.numero_peticion}}</td>
-                        <td>{{peticion.fecha | date:'mediumDate'}}</td>
+                    <td>{{peticion.fecha | date:'mediumDate'}}</td>
                     <!--<td>{{peticion.acto_certificar}}</td>
                     <td>{{peticion.responsable}}</td>
                     <td>{{peticion.solicitante}}</td>
