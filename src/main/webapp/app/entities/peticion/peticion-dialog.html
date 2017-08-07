@@ -224,6 +224,7 @@
     <h4 class="control-label" for="fi">Oficio</h4>
     <input type="file" name="file" id="fi">
   </div>
+  <div id="carga"></div>
 
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
@@ -252,6 +253,9 @@
               cache: false,
               contentType: false,
      processData: false,
+     beforeSend: function(){
+  $('#carga').html('<img class="logo-img" src="content/images/ajax-loader.gif"/>'  );
+   },
 success:function(data){
   //console.log(data);
   //var aux=$('#field_oficio').val().concat(data);
