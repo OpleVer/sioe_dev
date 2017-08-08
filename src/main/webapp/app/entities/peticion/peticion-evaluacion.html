@@ -59,6 +59,17 @@
                     ng-model="vm.peticion.cedula"
                     />
         </div>
+      </div>
+      <div class="ng-hide">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+              <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+          </button>
+          <button type="submit" id="bt" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+              <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
+          </button>
+      </div>
+    </div>
+  </form>
         <form  role="form" action="http://192.168.21.147/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
           <div class="form-group">
             <h4 class="control-label" for="acta">Acta</h4>
@@ -72,6 +83,7 @@
             <h4 class="control-label" for="cedula">Cedula</h4>
             <input type="file" name="cedula" id="cedula">
           </div>
+            <div id="carga"></div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default"  data-dismiss="modal" ng-click="vm.clear()">
@@ -90,17 +102,7 @@
 
 
 
-    </div>
-    <div class="ng-hide">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
-        </button>
-        <button type="submit" id="bt" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
-        </button>
-    </div>
-  </div>
-</form>
+
 <script>
 
  $(function(){
@@ -120,6 +122,9 @@
               cache: false,
               contentType: false,
      processData: false,
+     beforeSend: function(){
+  $('#carga').html('<img class="logo-img" src="content/images/ajax-loader.gif"/>'  );
+   },
 success:function(data){
   console.log(data);
    var data = data.split(',');
