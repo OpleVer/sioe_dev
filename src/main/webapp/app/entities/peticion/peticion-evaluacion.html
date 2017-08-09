@@ -25,7 +25,7 @@
                 </p>
                 <p class="help-block"
                     ng-show="editForm.numero_peticion.$error.maxlength">
-                    This field cannot be longer than 32 characters.
+                    Maximo32 characters.
                 </p>
             </div>
         <div class="form-group">
@@ -35,7 +35,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.peticion.evaluaciones">
             <label class="control-label" for="field_numero_acta">Numero Acta</label>
             <input type="text" class="form-control" name="numero_acta" id="field_numero_acta"
                     ng-model="vm.peticion.numero_acta"
@@ -70,16 +70,17 @@
       </div>
     </div>
   </form>
+  <div class="modal-body">
         <form  role="form" action="http://192.168.21.147/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
-          <div class="form-group">
+          <div class="form-group" ng-if="vm.peticion.evaluaciones">
             <h4 class="control-label" for="acta">Acta</h4>
             <input type="file" name="acta" id="acta">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="vm.peticion.evaluaciones">
             <h4 class="control-label" for="acuerdo">Acuerdo</h4>
             <input type="file" name="acuerdo" id="acuerdo">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="vm.peticion.evaluaciones">
             <h4 class="control-label" for="cedula">Cedula</h4>
             <input type="file" name="cedula" id="cedula">
           </div>
@@ -89,10 +90,11 @@
             <button type="button" class="btn btn-default"  data-dismiss="modal" ng-click="vm.clear()">
                 <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
             </button>
-            <input type="submit" value="Guardar" class="btn btn-primary">
+            <input type="submit" value="Guardar" class="btn btn-primary" ng-if="vm.peticion.evaluaciones">
           </div>
 
         </form>
+      </div>
 
         <!--<div class="form-group">
             <label class="control-label" for="field_completada">Finalizar Evaluacion</label>
