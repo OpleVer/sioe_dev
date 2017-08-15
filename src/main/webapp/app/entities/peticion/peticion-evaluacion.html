@@ -70,7 +70,7 @@
       </div>
     </div>
   </form>
-        <form  role="form" action="http://192.168.21.147/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
+        <form  role="form" action="http://192.168.21.253/webservice/eva.php" method="post" id="upload" enctype="multipart/form-data" >
           <div class="form-group">
             <h4 class="control-label" for="acta">Acta</h4>
             <input type="file" name="acta" id="acta">
@@ -115,7 +115,7 @@
          formData.append("dato", "valor");
 
          $.ajax({
-             url: "http://192.168.21.147/webservice/eva.php",
+             url: "http://192.168.21.253/webservice/eva.php",
              type: "post",
               dataType: "html",
               data: formData,
