@@ -68,9 +68,10 @@
                         {{peticion.responsables.tipo}}
                     </td>
                     <td>
-                         {{peticion.evaluaciones.tipo_evaluacion}} {{peticion.completada}}
+                         {{peticion.evaluaciones.tipo_evaluacion}} <span ng-hide="peticion.evaluaciones.tipo_evaluacion">Sin Evaluar</span>
                     </td>
-                    <td class="text-right">
+                    <td class="text-right" >
+                      <div class="">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
                                     ui-sref="peticion-detail({id:peticion.id})"
@@ -84,13 +85,13 @@
                                 <span class="glyphicon glyphicon-paperclip"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
-                            <button type="submit"
+                            <button ng-class="{active: vm.$state.includes('admin')}"  ng-show-when="true" has-authority="ROLE_ADMIN" type="submit"
                                     ui-sref="peticion.evaluacion({id:peticion.id})"
                                     class="btn btn-success btn-sm">
                                 <span class="glyphicon glyphicon-flag"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
-                            <button type="submit"
+                            <button ng-class="{active: vm.$state.includes('admin')}"  ng-show-when="true" has-authority="ROLE_ADMIN" type="submit"
                                     ui-sref="peticion.remitir({id:peticion.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-transfer"></span>
@@ -103,6 +104,7 @@
                                 <span class="hidden-sm-down"></span>
                             </button>-->
                         </div>
+                      </div>
                     </td>
                 </tr>
             </tbody>
